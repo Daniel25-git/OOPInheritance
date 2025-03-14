@@ -3,10 +3,10 @@ import java.util.ArrayList;
 public class Media{
     private String title;
     private String rating;
-    private String director;
-    private ArrayList<String> cast;
+    private Director director;
+    private ArrayList<Actor> cast;
 
-    public Media(String title, String rating, String director, ArrayList<String> cast) {
+    public Media(String title, String rating, Director director, ArrayList<Actor> cast) {
         this.title = title;
         this.rating = rating;
         this.director = director;
@@ -29,28 +29,41 @@ public class Media{
         this.rating = rating;
     }
 
-    public String getDirector() {
+    public Director getDirector() {
         return director;
     }
 
-    public void setDirector(String director) {
+    public void setDirector(Director director) {
         this.director = director;
     }
 
-    public ArrayList<String> getCast() {
+    public ArrayList<Actor> getCast() {
         return cast;
     }
 
-    public void setCast(ArrayList<String> cast) {
+    public void setCast(ArrayList<Actor> cast) {
         this.cast = cast;
     }
 
-    public String play(){
-        return "Playing media";
+    // add actors
+    public void addActor(Actor actor){
+        this.cast.add(actor);
     }
 
+    // remove actors
+    public void removeActor(Actor actor){
+        if(cast.contains(actor)){
+            cast.remove(actor);
+            System.out.println(actor + " removed successfully");
+        }
+        else {
+            System.out.println( actor + " " + "not exist in the list");
+        }
+
+    }
     @Override
     public String toString() {
-        return "Title: " + title ;
+        return "Title: " +  title + "\n" + "Rating: " + rating + "\n" +
+                getDirector() + "\n" + getCast();
     }
 }

@@ -5,7 +5,7 @@ public class Movie extends Media{
     private String description;
     private double grossing;
 
-    public Movie(String title, String rating, String director, ArrayList<String> cast, int length, String description, double grossing) {
+    public Movie(String title, String rating, Director director, ArrayList<Actor> cast, int length, String description, double grossing) {
         super(title, rating, director, cast);
         this.length = length;
         this.description = description;
@@ -37,21 +37,10 @@ public class Movie extends Media{
     }
 
     @Override
-    public String play() {
-        return "Playing movie: " + getTitle();
-    }
-
-    public void printMovie() {
-        System.out.println(play());
-        System.out.println(toString());
-        System.out.println("Rating: "+ getRating());
-        System.out.println("Director: " + getDirector());
-        System.out.print("Casts: ");
-        for(String cast : getCast()) {
-            System.out.print(cast + " ");
-        }
-        System.out.println();
-        System.out.println("Length: " + getLength());
-        System.out.println("Grossing: " + getGrossing());
+    public String toString() {
+        return  super.toString() + "\n" +
+                "length: " + length + "\n" +
+                "Description: " + description + "\n" +
+                "Grossing: " + grossing;
     }
 }
